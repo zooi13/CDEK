@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Проверка выбраны ли ПВЗ
 if(empty($_POST['pvz'])){
     header('Location: index.php');
@@ -84,5 +85,7 @@ $html = curl_exec($ch);
 curl_close($ch);
 
 $res = json_decode($html, true);
+$_SESSION['last_token'] = $res['entity']['uuid'];
 echo "<pre>";
 var_dump($res);
+var_dump($_SESSION['last_token']);

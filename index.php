@@ -1,19 +1,39 @@
-<form method="post" action="pvz_action.php">
-    <input type="hidden" name="pvz" placeholder="Код ПВЗ">
-    <a href="javascript:void(0)" onclick="widjet.open()">Выберите пункт выдачи</a>
-    <br><br>
-    <input type="text" name="address" readonly="readonly" placeholder="Адрес ПВЗ">
+<?php
+session_start();
+?>
+<div style="  float: left; width: 200px;">
+    <form method="post" action="pvz_action.php">
+        <input type="hidden" name="pvz" placeholder="Код ПВЗ">
+        <a href="javascript:void(0)" onclick="widjet.open()">Выберите пункт выдачи</a>
+        <br><br>
+        <input type="text" name="address" readonly="readonly" placeholder="Адрес ПВЗ">
 
 
-    <p>Имя получателя:</p>
-    <input type="text" name="name" placeholder="Имя получателя">
-    <p>Телефон получателя:</p>
-    <input type="text" name="phone" placeholder="Телефон получателя">
-    <p>Email получателя:</p>
-    <input type="text" name="email" placeholder="Email получателя">
-    <br><br>
-    <button type="submit" class="btn btn-primary">Продолжить</button>
-</form>
+        <p>Имя получателя:</p>
+        <input type="text" name="name" placeholder="Имя получателя">
+        <p>Телефон получателя:</p>
+        <input type="text" name="phone" placeholder="Телефон получателя">
+        <p>Email получателя:</p>
+        <input type="text" name="email" placeholder="Email получателя">
+        <br><br>
+        <button type="submit" class="btn btn-primary">Продолжить</button>
+    </form>
+</div>
+
+<div>
+    <form method="post" action="chek_action.php">
+        <p>Токен заказа:</p>
+        <input type="text" name="token" placeholder="Токен заказа" value="<?php
+        if((empty($_SESSION['last_token']))){
+            echo "";
+        } else {
+            echo $_SESSION['last_token'];
+        }
+        ?>">
+        <br><br>
+        <button type="submit" class="btn btn-primary">Продолжить</button>
+    </form>
+</div>
 
 
 
